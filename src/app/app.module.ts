@@ -7,9 +7,14 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
+import { EjercicioPage } from '../pages/ejercicio/ejercicio';
+
+import { EjercicioService } from '../services/ejercicio.service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    EjerciciosPage,
+    EjercicioPage,
     TabsPage
   ],
   imports: [
@@ -29,11 +36,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    EjerciciosPage,
+    EjercicioPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    HTTP,
+    EjercicioService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
