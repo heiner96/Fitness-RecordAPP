@@ -16,6 +16,7 @@ import { Ejercicio } from '../../database';
 })
 export class EjercicioPage {
 	ejercicio : Ejercicio;
+	public timer = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {  	
   	this.ejercicio=this.navParams.get('ejercicio');
   	this.revisarTiempo(this.ejercicio); 
@@ -29,7 +30,12 @@ export class EjercicioPage {
   revisarTiempo(ejercicio : Ejercicio){
 	if (ejercicio.hasOwnProperty('tiempo')) { 
 		if(ejercicio.tiempo!=0){
-			  		//es ejercicio por tiempo
+		   var intervalVar = setInterval(function(){
+		   	this.timer++;
+		   	if(this.timer==15){//*********************cambiar**********************
+		   		clearInterval(intervalVar);//hacer que vibre 5 segundos
+		   	}
+		   }.bind(this),1000)
 		}
 		else{
 			  		//no es un ejercicio por tiempo
