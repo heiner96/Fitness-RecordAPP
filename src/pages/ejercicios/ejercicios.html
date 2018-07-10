@@ -7,25 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>EJERCICIOS</ion-title>
+    <ion-title>EJERCICIOS DE RUTINA</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-card>
-      <ion-card-header>¡SI SE PUEDE!</ion-card-header>
-      <p></p>
-  </ion-card>
-	<ion-card>
-		<ion-card-header>EJERCICIOS</ion-card-header>
-
     <ion-list *ngFor="let ejercicio of ejercicios">
-	<ion-card>
-    	<img src="ejercicio.imagen" (tap)="showEjercicio(ejercicio.id)">
-       </ion-card>
+		<ion-card (click)="showEjercicio(ejercicio)">
+			<h2 align="center"><p>{{ejercicio.descripcion}}</p></h2>
+			<ion-thumbnail>
+	          <img src="{{ejercicio.imagen}}"  >
+	        </ion-thumbnail>
+	        	<span align="left" ></span>
+	        	<h2 align="center" ><p>Leer mas...</p></h2>
+		</ion-card>
     </ion-list>
-
-	</ion-card>
 </ion-content>

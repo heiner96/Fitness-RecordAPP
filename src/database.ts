@@ -15,7 +15,7 @@ export class Ejercicio implements IEjercicio
  	tiempo : number;
  	musculo : number;
  	id? : number;
-	constructor(pDescripcion? : string, pExplicacion? : string, pId?: string, pImagen? : string, pTiempo? : number, pMusculo? : number)
+	constructor(pDescripcion? : string, pExplicacion? : string, pId?: number, pImagen? : string, pTiempo? : number, pMusculo? : number)
 	{
 		this.descripcion=pDescripcion;
 		this.explicacion=pExplicacion;

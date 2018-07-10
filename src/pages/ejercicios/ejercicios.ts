@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Ejercicio} from '../../database';
+import { IonicPage, NavController, NavParams , ModalController  } from 'ionic-angular';
+import { Ejercicio } from '../../database';
+import { EjercicioPage } from '../ejercicio/ejercicio';
 /**
  * Generated class for the EjerciciosPage page.
  *
@@ -15,21 +16,22 @@ import {Ejercicio} from '../../database';
 })
 export class EjerciciosPage {
   ejercicios : Ejercicio [];	
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  			 public modalCtrl: ModalController) {
   	this.ejercicios=[
   	{
-  		descripcion:'pecho plano',
+  		descripcion:'PECHO PLANO',
 		explicacion:'hago donde quiera',
-		id:'1',
+		id:1,
 		imagen:'https://medellinfit-medellinfit.netdna-ssl.com/wp-content/uploads/2015/12/Press-de-banca-tipo-guillotina.gif',
 		tiempo:2,
 		musculo:2
 
   	},
   	{
-  		descripcion:'pecho declinado',
+  		descripcion:'PECHO DECLINADO',
 		explicacion:'hago donde quiera',
-		id:'1',
+		id:2,
 		imagen:'https://medellinfit-medellinfit.netdna-ssl.com/wp-content/uploads/2016/03/Press-de-banca-declinado.gif',		
 		tiempo:2,
 		musculo:2
@@ -39,5 +41,13 @@ export class EjerciciosPage {
   ionViewWillEnter() {
     
   }
+  showEjercicio(ejercicio: Ejercicio){
+   const modal = this.modalCtrl.create(EjercicioPage,{ ejercicio : ejercicio });
+   modal.present().then(response => {
+	    console.log(response);
+	}).catch(e => {
+	    console.log(e);
+	});
 
+  }
 }

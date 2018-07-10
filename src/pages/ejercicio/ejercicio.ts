@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Ejercicio } from '../../database';
 
 /**
  * Generated class for the EjercicioPage page.
@@ -14,12 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ejercicio.html',
 })
 export class EjercicioPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	ejercicio : Ejercicio;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {  	
+  	this.ejercicio=this.navParams.get('ejercicio');
+  	console.log(this.ejercicio); 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EjercicioPage');
+  ionViewWillLoad() {  
   }
-
+  hide(){
+  	this.view.dismiss();
+  }
 }

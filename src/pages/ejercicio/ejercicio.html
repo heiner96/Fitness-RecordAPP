@@ -7,12 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ejercicio</ion-title>
+    <ion-title>EJERCICIO</ion-title>
+      <ion-buttons end>
+  		<button ion-button (click)="hide()">Close</button>
+ 	 </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+	<input disabled="disabled" type="text" name="descripcion" [(ngModel)]="ejercicio.descripcion" align="center" ngDefaultControl>	
 </ion-content>
