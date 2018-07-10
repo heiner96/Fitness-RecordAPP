@@ -24,7 +24,7 @@ export class EjerciciosPage {
 		explicacion:'hago donde quiera',
 		id:1,
 		imagen:'https://medellinfit-medellinfit.netdna-ssl.com/wp-content/uploads/2015/12/Press-de-banca-tipo-guillotina.gif',
-		tiempo:2,
+		tiempo:0,
 		musculo:2
 
   	},
@@ -33,7 +33,7 @@ export class EjerciciosPage {
 		explicacion:'hago donde quiera',
 		id:2,
 		imagen:'https://medellinfit-medellinfit.netdna-ssl.com/wp-content/uploads/2016/03/Press-de-banca-declinado.gif',		
-		tiempo:2,
+		tiempo:20,
 		musculo:2
   	}];
   }

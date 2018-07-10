@@ -15,6 +15,7 @@ import { EjercicioService } from '../services/ejercicio.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HTTP } from '@ionic-native/http';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HTTP } from '@ionic-native/http';
     StatusBar,
     SplashScreen,
     HTTP,
+    Vibration,
     EjercicioService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

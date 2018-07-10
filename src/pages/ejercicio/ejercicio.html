@@ -18,10 +18,12 @@
 	<input disabled="disabled" type="textarea" name="descripcion" [(ngModel)]="ejercicio.descripcion" align="center" ngDefaultControl>
 	<label>EXPLICACION</label>
 	<input disabled="disabled" type="textarea" name="descripcion" [(ngModel)]="ejercicio.explicacion" align="center" ngDefaultControl>
-	{{timer}}
+	<div *ngIf="ejercicio.tiempo>0">
+		<label>TIEMPO :</label> {{timer}}
+		<ion-icon name="alarm"></ion-icon>
+	</div>	
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-title align="center">💪 🍗 😴</ion-title>
   </ion-toolbar>
 </ion-footer>
