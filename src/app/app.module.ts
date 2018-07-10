@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -27,7 +29,9 @@ import { Vibration } from '@ionic-native/vibration';
     EjercicioPage,
     TabsPage
   ],
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],

@@ -24,7 +24,7 @@ export class EjerciciosPage {
 		explicacion:'hago donde quiera',
 		id:1,
 		imagen:'https://medellinfit-medellinfit.netdna-ssl.com/wp-content/uploads/2015/12/Press-de-banca-tipo-guillotina.gif',
-		tiempo:0,
+		tiempo:1,
 		musculo:2
 
   	},

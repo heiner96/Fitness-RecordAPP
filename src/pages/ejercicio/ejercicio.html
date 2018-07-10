@@ -21,6 +21,13 @@
 	<div *ngIf="ejercicio.tiempo>0">
 		<label>TIEMPO :</label> {{timer}}
 		<ion-icon name="alarm"></ion-icon>
+		<mbsc-form>
+	    <div class="mbsc-form-group">
+	        <div class="mbsc-form-group-title">Embedded countdown</div>
+	       		<div [(ngModel)]="timer" mbsc-timer [mbsc-options]="timerSettings"></div>
+	    	</div>
+		</mbsc-form>
+
 	</div>	
 </ion-content>
 <ion-footer>
