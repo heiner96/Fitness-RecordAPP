@@ -33,23 +33,23 @@ export class EjercicioPage {
   	console.log(this.ejercicio.tiempo);
   	this.timerSettingss();
   }
-  timerSettingss(tiempo:number){
+  timerSettingss(){
   	  	this.timerSettings = {
         display: 'inline',
         targetTime: this.ejercicio.tiempo*60,
         maxWheel: 'minutes',
         minWidth: 100,
         onFinish: function () {
-            vibrar();            
-        },
-        onFinish: function () {
             mobiscroll.alert({
                 title: "¡TIEMPO FINALIZADO!",
                 message: "¡SI, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
 
             });
-        }
-    };    
+        },vibrar();
+    };
+  }
+  vibrar(){
+  	 this.vibration.vibrate([2000,1000,2000]);
   }
   
   ionViewWillLoad() {  
@@ -57,9 +57,7 @@ export class EjercicioPage {
   hide(){
   	this.view.dismiss();
   }
-  vibrar(){
-  	this.vibration.vibrate([2000,1000,2000]);
-  }
+  
   revisarTiempo(ejercicio : Ejercicio){
 	if (ejercicio.hasOwnProperty('tiempo')) { 
 		if(ejercicio.tiempo!=0){

@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>EJERCICIO</ion-title>
       <ion-buttons end>
-  		<button ion-button (click)="hide()">Close</button>
+  		<button ion-button (click)="hide()">CERRAR</button>
  	 </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -19,9 +19,6 @@
 	<label>EXPLICACION</label>
 	<input disabled="disabled" type="textarea" name="descripcion" [(ngModel)]="ejercicio.explicacion" align="center" ngDefaultControl>
 	<div *ngIf="ejercicio.tiempo>0">
-		<label>TIEMPO :</label> 
-		<ion-icon name="alarm"></ion-icon>
-
 		<mbsc-form>
 		    <div class="mbsc-form-group">
 		        <div class="mbsc-form-group-title">TIEMPO PROGRAMADO</div>
