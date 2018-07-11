@@ -42,7 +42,7 @@ export class EjercicioPage {
         onFinish: function () {
             mobiscroll.alert({
                 title: "¡TIEMPO FINALIZADO!",
-                message: "¡SI, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
+                message: "¡SI!, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
 
             });
         },vibrar();
