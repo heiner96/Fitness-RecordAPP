@@ -42,7 +42,7 @@ import { Vibration } from '@ionic-native/vibration';
     ContactPage,
     HomePage,
     EjerciciosPage,
-    EjercicioPage,
+    EjercicioPage,  
     TabsPage
   ],
   providers: [

@@ -12,6 +12,9 @@ import { mobiscroll } from '@mobiscroll/angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+ mobiscroll.settings = {
+    theme: 'ios',
+};
 
 @IonicPage()
 @Component({
@@ -21,21 +24,41 @@ import { mobiscroll } from '@mobiscroll/angular';
 export class EjercicioPage {
 
 	ejercicio : Ejercicio;
-	//public timer = 0;
 	timer: number;
-
+  	timerSettings: any ;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   			 private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController) {  	
   	
   	this.ejercicio=this.navParams.get('ejercicio');
-  	this.timerSettings();
-  	//this.revisarTiempo(this.ejercicio); 
+  	console.log(this.ejercicio.tiempo);
+  	this.timerSettingss();
   }
+  timerSettingss(tiempo:number){
+  	  	this.timerSettings = {
+        display: 'inline',
+        targetTime: this.ejercicio.tiempo*60,
+        maxWheel: 'minutes',
+        minWidth: 100,
+        onFinish: function () {
+            vibrar();            
+        },
+        onFinish: function () {
+            mobiscroll.alert({
+                title: "¡TIEMPO FINALIZADO!",
+                message: "¡SI, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
 
+            });
+        }
+    };    
+  }
+  
   ionViewWillLoad() {  
   }
   hide(){
   	this.view.dismiss();
+  }
+  vibrar(){
+  	this.vibration.vibrate([2000,1000,2000]);
   }
   revisarTiempo(ejercicio : Ejercicio){
 	if (ejercicio.hasOwnProperty('tiempo')) { 
@@ -63,20 +86,5 @@ export class EjercicioPage {
 		//no tiene tiempo
 	}  	
   }
-  timerSettings(){
-  	var timerSettings: any = {
-        display: 'inline',
-        targetTime: 10,
-        maxWheel: 'minutes',
-        minWidth: 100,
-        onFinish: function () {
-            mobiscroll.alert({
-                title: "Countdown finished",
-                message: "Yup, that's right, time's up. <br> Restart it by setting a new time."
-
-            	});
-        	}
-   		};
-	}
-
+ 
 }
