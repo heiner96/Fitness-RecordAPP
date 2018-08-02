@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
 import { EjercicioPage } from '../pages/ejercicio/ejercicio';
+import { LoginPage } from '../pages/login/login';
 
 import { EjercicioService } from '../services/ejercicio.service';
 import { ChartsModule } from 'ng2-charts';
@@ -27,6 +28,7 @@ import { Vibration } from '@ionic-native/vibration';
     ContactPage,
     HomePage,
     EjerciciosPage,
+    LoginPage,
     EjercicioPage,
     TabsPage
   ],
@@ -43,6 +45,7 @@ import { Vibration } from '@ionic-native/vibration';
     AboutPage,
     ContactPage,
     HomePage,
+    LoginPage,
     EjerciciosPage,
     EjercicioPage,  
     TabsPage
