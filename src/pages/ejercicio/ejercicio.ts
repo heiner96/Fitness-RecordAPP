@@ -45,7 +45,7 @@ export class EjercicioPage {
                 message: "¡SI!, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
 
             });
-        },vibrar();
+        }//,vibrar();
     };
   }
   vibrar(){

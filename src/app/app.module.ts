@@ -13,6 +13,7 @@ import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
 import { EjercicioPage } from '../pages/ejercicio/ejercicio';
 
 import { EjercicioService } from '../services/ejercicio.service';
+import { ChartsModule } from 'ng2-charts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,8 +33,9 @@ import { Vibration } from '@ionic-native/vibration';
   imports: [ 
     FormsModule, 
     MbscModule,
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
+    BrowserModule,    
+    IonicModule.forRoot(MyApp),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
