@@ -14,6 +14,7 @@ import { EjercicioPage } from '../pages/ejercicio/ejercicio';
 import { LoginPage } from '../pages/login/login';
 
 import { EjercicioService } from '../services/ejercicio.service';
+import { AuthService } from '../services/auth.service';
 import { ChartsModule } from 'ng2-charts';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -55,6 +56,7 @@ import { Vibration } from '@ionic-native/vibration';
     SplashScreen,
     HTTP,
     Vibration,
+    AuthService,
     EjercicioService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
