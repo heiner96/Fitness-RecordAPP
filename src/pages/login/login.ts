@@ -25,7 +25,7 @@ export class LoginPage {
   }
 	login()
 	{
-		if(this.email=="heiner96@gmail.com" && this.password=="Kehenima!1")
+		if(this.email=="aa" && this.password=="aa")
 		{
 			this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => console.log(error));
 		}
