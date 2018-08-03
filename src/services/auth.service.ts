@@ -1,29 +1,48 @@
 import  {Injectable} from '@angular/core';
-import { UserL } from '../database';
+import { User } from '../database';
 import * as $ from "jquery";
 
 @Injectable()
 export  class AuthService
 {
-	user : UserL;
-	login(pEmail: string, pPassword: string)
+	user : User;
+	login(pEmail: string, pPassword: string):boolean
 	{
-		let userl={email:pEmail,password:pPassword,	"remember_me": true};
+		let userl={"email":pEmail,"password":pPassword,	"remember_me": true};
 		$.ajax({
 		  type: 'POST',	
-		  dataType: 'json',
+		  dataType: "json",
 		  headers: {
 		        'Content-Type':'application/json',
-		        'X-Requested-With':'XMLHttpRequest',
-		        'Access-Control-Allow-Origin' : '*'
+		        'X-Requested-With':'XMLHttpRequest'
 		  }, 
 		  url: 'https://fitnessrecord.herokuapp.com/api/auth/login',
-		  data: userl,
+		  data: JSON.stringify(userl),
 		  processData: false,
 		  success: function(msg) {
-		    console.log(msg);
-		    return true;
-		  }
+				$.ajax({
+					type: 'GET',	
+					dataType: "json",
+					headers: {
+						'Authorization':'Bearer '+ msg['access_token']
+					}, 
+						url: 'https://fitnessrecord.herokuapp.com/api/auth/user',
+						processData: false,
+						success: function(user) {
+							this.user = new User(user['id'],user['email'],user['diaPago'],'',user['edad'],user['idGimnasio'],user['rol'],msg['access_token']);						    
+							console.log(this.user);
+							return true;
+						},
+					    error: function (request, status, error) {
+					      return false
+					      console.log(error);
+					    }
+						});
+		  },
+		    error: function (request, status, error) {
+		      return false
+		      console.log(error);
+		    }
 		});
 	}
 }
