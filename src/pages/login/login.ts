@@ -18,7 +18,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginPage {
 	email: string;
 	password : string
-  constructor(public navCtrl: NavController, public navParams: NavParams, private servicio: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public servicio: AuthService) {
   }
 
   ionViewDidLoad() {
@@ -26,9 +26,11 @@ export class LoginPage {
   }
 	login()
 	{
-		if(this.servicio.login(this.email,this.password))
+		this.servicio.login(this.email,this.password)
+		console.log(this.servicio);
+		/*if(this.servicio.user.hasOwnProperty('at'))
 		{
 			this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => console.log(error));
-		}
+		}*/
 	}
 }

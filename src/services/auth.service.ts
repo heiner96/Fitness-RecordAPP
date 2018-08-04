@@ -5,8 +5,9 @@ import * as $ from "jquery";
 @Injectable()
 export  class AuthService
 {
-	user : User;
-	login(pEmail: string, pPassword: string):boolean
+	public user : User;
+
+	login(pEmail: string, pPassword: string)
 	{
 		let userl={"email":pEmail,"password":pPassword,	"remember_me": true};
 		$.ajax({
@@ -30,18 +31,13 @@ export  class AuthService
 						processData: false,
 						success: function(user) {
 							this.user = new User(user['id'],user['email'],user['diaPago'],'',user['edad'],user['idGimnasio'],user['rol'],msg['access_token']);						    
-							console.log(this.user);
-							return true;
+							console.log(this.user);							
 						},
 					    error: function (request, status, error) {
-					      return false
-					      console.log(error);
 					    }
 						});
 		  },
 		    error: function (request, status, error) {
-		      return false
-		      console.log(error);
 		    }
 		});
 	}
