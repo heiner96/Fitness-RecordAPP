@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EjerciciosPage } from '../ejercicios/ejercicios';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'page-home',
@@ -9,10 +10,20 @@ import { EjerciciosPage } from '../ejercicios/ejercicios';
 
 export class HomePage{
 	ejerciciosPage1=EjerciciosPage;
-
-  constructor(public navCtrl: NavController) {
-  	
+	repeticiones: any;
+  constructor(public navCtrl: NavController,private servicio: AuthService) {
+  	 this.getRepeticiones(this.servicio.user.at);
+  }
+  ionViewDidLoad() {
+   
   }
   showEjercicios(tipoMusculo : number){//13
+  }
+  getRepeticiones(access_token){
+  	this.servicio.getRepeticiones(access_token).done((repeticion) => {
+  		console.log(repeticion);
+  		console.log(repeticion.repeticiones);
+  		this.repeticiones=repeticion['repeticiones'];
+  	});
   }
 }

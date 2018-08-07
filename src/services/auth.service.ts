@@ -7,10 +7,11 @@ export  class AuthService
 {
 	public user : User;
 
-	login(pEmail: string, pPassword: string)
+	public login(pEmail: string, pPassword: string)
 	{
 		let userl={"email":pEmail,"password":pPassword,	"remember_me": true};
-		$.ajax({
+		let self=this;
+		return $.ajax({
 		  type: 'POST',	
 		  dataType: "json",
 		  headers: {
@@ -19,26 +20,30 @@ export  class AuthService
 		  }, 
 		  url: 'https://fitnessrecord.herokuapp.com/api/auth/login',
 		  data: JSON.stringify(userl),
-		  processData: false,
-		  success: function(msg) {
-				$.ajax({
-					type: 'GET',	
-					dataType: "json",
-					headers: {
-						'Authorization':'Bearer '+ msg['access_token']
-					}, 
-						url: 'https://fitnessrecord.herokuapp.com/api/auth/user',
-						processData: false,
-						success: function(user) {
-							this.user = new User(user['id'],user['email'],user['diaPago'],'',user['edad'],user['idGimnasio'],user['rol'],msg['access_token']);						    
-							console.log(this.user);							
-						},
-					    error: function (request, status, error) {
-					    }
-						});
-		  },
-		    error: function (request, status, error) {
-		    }
+		  processData: false
 		});
+	}
+
+	public currentUser(access_token) {
+		return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/user',
+				processData: false,
+				});
+	}
+	public getRepeticiones(access_token){
+		return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/repeticiones',
+				processData: false,
+				});
 	}
 }
