@@ -17,7 +17,8 @@ export class HomePage{
   ionViewDidLoad() {
    
   }
-  showEjercicios(tipoMusculo : number){//13
+  showEjercicios(musculo: number){
+    this.servicio.musculo=musculo;
   }
   getRepeticiones(access_token){
   	this.servicio.getRepeticiones(access_token).done((data) => {      

@@ -6,6 +6,7 @@ import * as $ from "jquery";
 export  class AuthService
 {
 	public user : User;
+	public musculo: number;
 
 	public login(pEmail: string, pPassword: string)
 	{
@@ -43,6 +44,17 @@ export  class AuthService
 				'Authorization':'Bearer '+ access_token
 			}, 
 				url: 'https://fitnessrecord.herokuapp.com/api/auth/repeticiones',
+				processData: false,
+				});
+	}
+	public getEjercicios(access_token){
+		return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/ejercicios/'+this.musculo,
 				processData: false,
 				});
 	}
