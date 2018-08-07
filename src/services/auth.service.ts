@@ -58,4 +58,15 @@ export  class AuthService
 				processData: false,
 				});
 	}
+	public getMedicionesInfo(access_token){
+			return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/medicion',
+				processData: false,
+				});	
+	}
 }
