@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class HomePage{
 	ejerciciosPage1=EjerciciosPage;
-	repeticiones: any;
+	repeticiones : number
   constructor(public navCtrl: NavController,private servicio: AuthService) {
   	 this.getRepeticiones(this.servicio.user.at);
   }
@@ -20,10 +20,8 @@ export class HomePage{
   showEjercicios(tipoMusculo : number){//13
   }
   getRepeticiones(access_token){
-  	this.servicio.getRepeticiones(access_token).done((repeticion) => {
-  		console.log(repeticion);
-  		console.log(repeticion.repeticiones);
-  		this.repeticiones=repeticion['repeticiones'];
+  	this.servicio.getRepeticiones(access_token).done((data) => {      
+      this.repeticiones=data['repeticiones'];
   	});
   }
 }

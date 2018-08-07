@@ -29,15 +29,9 @@ export class LoginPage {
 	{
 		this.servicio.login(this.email,this.password).done((msg) => {
 			this.servicio.currentUser(msg['access_token']).done((user) => {
-				this.servicio.user = new User(user['id'],user['email'],user['pDiaPago'],user['token'],user['edad'],user['idGimnasio'],1,msg['access_token']);				
-				//console.log(this.servicio.user.at);
+				this.servicio.user = new User(user['id'],user['email'],user['pDiaPago'],user['token'],user['edad'],user['idGimnasio'],1,msg['access_token']);
 				this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => console.log(error));
 			})
 		});
-
-		/*if(this.servicio.user.hasOwnProperty('at'))
-		{
-			
-		}*/
 	}
 }

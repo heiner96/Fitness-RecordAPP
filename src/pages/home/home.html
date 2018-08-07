@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-title>REPETICIONES ASIGNADAS: <span [(ngModel)]="repeticiones" ngDefaultControl></span></ion-title>
+  <ion-title>REPETICIONES: <input [(ngModel)]="repeticiones"  ngDefaultControl disabled="disabled"></ion-title>
   <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(6)">ESPALDA</button>
   <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(1)">CUADRICEPS</button>
   <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(2)">ISQUIOTIBIALES</button>
