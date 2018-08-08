@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-contact',
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 export class ContactPage {
   idG: number ;
   codigo: string;
-  constructor(public navCtrl: NavController, private servicio: AuthService) {
+  constructor(public navCtrl: NavController, private servicio: AuthService, public alertCtrl: AlertController) {
   	this.actualizar();
   }
   ionViewWillEnter(){
@@ -35,9 +36,22 @@ export class ContactPage {
   }
   meterGimnasio(){
 	this.servicio.revisarCodigo( this.servicio.user.at , this.codigo ).done((datas)=>{
-	  	this.servicio.joinGym( this.servicio.user.at , datas['id'] ).done((data)=>{
-	  		this.actualizar();
-	  	});
+	  	console.log(datas);
+	  	if(Object.keys(datas).length==0)
+	  	{
+	  		const alert = this.alertCtrl.create({
+			      title: '¡ALERTA!',
+			      subTitle: '!Este codigo no pertenece a ningun gimnasio!',
+			      buttons: ['OK']
+			    });
+			    alert.present();
+			    return;
+	  	}else
+	  	{
+			this.servicio.joinGym( this.servicio.user.at , datas['id'] ).done((data)=>{
+				this.actualizar();
+			});
+	  	}
 	});  	
   }
 }
