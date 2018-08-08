@@ -34,7 +34,7 @@ export  class AuthService
 			}, 
 				url: 'https://fitnessrecord.herokuapp.com/api/auth/user',
 				processData: false,
-				});
+			});
 	}
 	public getRepeticiones(access_token){
 		return $.ajax({
@@ -45,7 +45,7 @@ export  class AuthService
 			}, 
 				url: 'https://fitnessrecord.herokuapp.com/api/auth/repeticiones',
 				processData: false,
-				});
+			});
 	}
 	public getEjercicios(access_token){
 		return $.ajax({
@@ -56,10 +56,10 @@ export  class AuthService
 			}, 
 				url: 'https://fitnessrecord.herokuapp.com/api/auth/ejercicios/'+this.musculo,
 				processData: false,
-				});
+			});
 	}
 	public getMedicionesInfo(access_token){
-			return $.ajax({
+		return $.ajax({
 			type: 'GET',	
 			dataType: "json",
 			headers: {
@@ -67,6 +67,50 @@ export  class AuthService
 			}, 
 				url: 'https://fitnessrecord.herokuapp.com/api/auth/medicion',
 				processData: false,
-				});	
+			});	
+	}
+	public salirseGym(access_token){
+		return $.ajax({
+			type: 'PUT',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/gimnasio',
+				processData: false,
+			});	
+	}
+	public checkGym(access_token){
+		return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/gimnasio',
+				processData: false,
+			});			
+	}
+	public joinGym( access_token , idGimnasio ){
+		return $.ajax({
+			type: 'PUT',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/egimnasio/'+idGimnasio,
+				processData: false,
+			});	
+	}
+	public revisarCodigo(access_token , codigo){
+		return $.ajax({
+			type: 'GET',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'https://fitnessrecord.herokuapp.com/api/auth/gimnasio/'+codigo,
+				processData: false,
+			});	
 	}
 }

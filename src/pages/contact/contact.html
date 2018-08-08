@@ -7,5 +7,28 @@
 </ion-header>
 
 <ion-content>
-	<div> <ion-icon name="log-out" align="center"></ion-icon></div>
+	<div *ngIf="idG>1">
+		<button ion-button icon-end round (click)="salirse()">
+		  Salirse del Gimnasio.
+		  <ion-icon name="log-out"></ion-icon>
+		</button>
+	</div>
+	<div *ngIf="idG==1">
+		<ion-card center>
+			<ion-card-header>
+				CODIGO DEL GIMNASIO.
+			</ion-card-header>
+			<ion-card-content>
+				<ion-list>
+					<ion-item>
+						<ion-label fixed>CODIGO:</ion-label>
+						<ion-input type="text" [(ngModel)]="codigo"></ion-input>
+					</ion-item>
+				</ion-list>
+				<div padding>
+					<button ion-button block (click)="meterGimnasio()">ENTRAR <ion-icon name="log-in"></ion-icon></button>
+				</div>
+			</ion-card-content>
+		</ion-card>
+	</div>
 </ion-content>
