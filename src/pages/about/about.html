@@ -4,15 +4,17 @@
       MEDICIONES
     </ion-title>
   </ion-navbar>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>  
+
 </ion-header>
 
 <ion-content padding>
+  <h3>Mediciones historicas de 2 años.</h3>
   <div class="row">
     <div class="col-md-6">
       <div style="display: block;">
-      <canvas baseChart width="330" height="480"
+          <canvas baseChart width="330" height="480"
                   [datasets]="lineChartData"
                   [labels]="lineChartLabels"
                   [options]="lineChartOptions"

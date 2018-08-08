@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import * as $ from "jquery";
 import { AuthService } from '../../services/auth.service';
 
+
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -14,6 +16,7 @@ export class AboutPage{
   	this.getMedicionesInfo();
     //this.cargarDatos();
   }
+
 
   public lineChartLabels:Array<any> = [/*'January', 'February', 'March', 'April', 'May', 'June', 'July'*/];
   public lineChartData:Array<any> = [
@@ -74,8 +77,11 @@ export class AboutPage{
       score.TeamM.push(parseInt(datas[i].biceps));//
       score.TeamN.push(parseInt(datas[i].muslo));//
       score.TeamO.push(parseInt(datas[i].pantorrilla));//  //15 respuestas de grupos musculares
-      date=new Date(datas[i].fecha);
-      score.TeamFechas.push(date);
+      //date=new Date(datas[i].fecha);
+      //console.log((datas[i].fecha).toString());
+      var d = new Date(datas[i].fecha);
+      score.TeamFechas.push(d.toString());
+      //score.TeamFechas.push(datas[i].fecha);
     });
     //arreglo= new Array();
     this.lineChartData=[
