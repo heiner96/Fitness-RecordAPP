@@ -20,21 +20,21 @@ export class AboutPage{
 
   public lineChartLabels:Array<any> = [/*'January', 'February', 'March', 'April', 'May', 'June', 'July'*/];
   public lineChartData:Array<any> = [
-  {data: [65, 59, 80, 81, 56, 55, 40], label: 'ABDOMEN'},//p
-  {data: [28, 48, 40, 19, 86, 27, 90], label: 'BICEPS'},//p
-  {data: [18, 48, 77, 9, 100, 27, 40], label: 'BICEPS DERECHO CONTRAÍDO'},//c
-  {data: [48, 48, 77, 9, 100, 27, 40], label: 'BICEPS IZQUIERDO CONTRAÍDO'},//c celeste
-  {data: [98, 48, 77, 9, 100, 27, 40], label: 'ESPALDA'},//c
-  {data: [158, 48, 77, 9, 100, 27, 40], label: 'ÍNDICE DE MASA CORPORAL'},//ec
-  {data: [8, 48, 77, 9, 100, 27, 40], label: 'MUSLO'},//p
-  {data: [162, 48, 77, 9, 100, 27, 40], label: 'MUSLO DERECHO'},//c
-  {data: [38, 48, 77, 9, 100, 27, 40], label: 'MUSLO IZQUIERDO'},//c
-  {data: [88, 48, 77, 9, 100, 27, 40], label: 'PORCENTAJE DE GRASA'},//ec verde
-  {data: [98, 48, 77, 9, 150, 27, 40], label: 'PORCENTAJE DE MÚSCULO'},//ec
-  {data: [48, 48, 77, 9, 100, 27, 40], label: 'PANTORRILLAS'},//p
-  {data: [228, 48, 77, 9, 100, 27, 40], label: 'PECHO'},//c
-  {data: [168, 48, 77, 9, 100, 27, 40], label: 'PESO'},//ec
-  {data: [48, 48, 77, 9, 100, 27, 40], label: 'TRICEPS'}//p
+  {data: [/*65, 59, 80, 81, 56, 55, 40*/], label: 'ABDOMEN'},//p
+  {data: [/*28, 48, 40, 19, 86, 27, 90*/], label: 'BICEPS'},//p
+  {data: [/*18, 48, 77, 9, 100, 27, 40*/], label: 'BICEPS DERECHO CONTRAÍDO'},//c
+  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'BICEPS IZQUIERDO CONTRAÍDO'},//c celeste
+  {data: [/*98, 48, 77, 9, 100, 27, 40*/], label: 'ESPALDA'},//c
+  {data: [/*158, 48, 77, 9, 100, 27, 40*/], label: 'ÍNDICE DE MASA CORPORAL'},//ec
+  {data: [/*8, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO'},//p
+  {data: [/*162, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO DERECHO'},//c
+  {data: [/*38, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO IZQUIERDO'},//c
+  {data: [/*88, 48, 77, 9, 100, 27, 40*/], label: 'PORCENTAJE DE GRASA'},//ec verde
+  {data: [/*98, 48, 77, 9, 150, 27, 40*/], label: 'PORCENTAJE DE MÚSCULO'},//ec
+  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'PANTORRILLAS'},//p
+  {data: [/*228, 48, 77, 9, 100, 27, 40*/], label: 'PECHO'},//c
+  {data: [/*168, 48, 77, 9, 100, 27, 40*/], label: 'PESO'},//ec
+  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'TRICEPS'}//p
 ];
   getMedicionesInfo()
   {

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { Ejercicio } from '../../database';
 import { Vibration } from '@ionic-native/vibration';
 import { AlertController } from 'ionic-angular';
+import { AppAvailability } from '@ionic-native/app-availability';
+import { Health } from '@ionic-native/health';
 
 import { mobiscroll } from '@mobiscroll/angular';
 
@@ -27,11 +29,11 @@ export class EjercicioPage {
 	timer: number;
   	timerSettings: any ;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  			 private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController) {  	
+  			 private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health,private appAvailability: AppAvailability) {  	
   	
   	this.ejercicio=this.navParams.get('ejercicio');
-  	console.log(this.ejercicio.tiempo);
   	this.timerSettingss();
+    //this.revisarSiGoogleFitInstalado()
   }
   timerSettingss(){
   	  	this.timerSettings = {
@@ -40,12 +42,13 @@ export class EjercicioPage {
         maxWheel: 'minutes',
         minWidth: 100,
         onFinish: function () {
-            mobiscroll.alert({
+            /*mobiscroll.alert({
                 title: "¡TIEMPO FINALIZADO!",
                 message: "¡SI!, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
 
-            });
-        }//,vibrar();
+            });*/
+            this.vibration.vibrate([2000,1000,2000]);
+        }//vibrar();
     };
   }
   vibrar(){
@@ -57,7 +60,22 @@ export class EjercicioPage {
   hide(){
   	this.view.dismiss();
   }
-  
+  /*com.google.android.apps.fitness npaquete de google fit a ver si esta instalado*/
+  /*revisarSiGoogleFitInstalado()
+  {
+    var scheme='com.google.android.apps.fitness';
+    this.appAvailability.check(
+        scheme,       // URI Scheme or Package Name
+        function() {  // Success callback
+          alert(scheme + ' is available :)');
+            console.log(scheme + ' is available :)');
+        },
+        function() {  // Error callback
+          alert(scheme + ' is not available :(');
+            console.log(scheme + ' is not available :(');
+        }
+    );
+  }*/
   revisarTiempo(ejercicio : Ejercicio){
 	if (ejercicio.hasOwnProperty('tiempo')) { 
 		if(ejercicio.tiempo!=0){
@@ -83,6 +101,26 @@ export class EjercicioPage {
 	else{
 		//no tiene tiempo
 	}  	
+  }
+  calories(){
+      this.health.isAvailable()
+        .then((available:boolean) => {
+          console.log(available);
+          this.health.requestAuthorization(
+            [
+              'calories', 'distance',   // Read and write permissions
+              {
+                read : ['steps'],       // Read only permission
+                write : ['height', 'weight']  // Write only permission
+              }
+            ])
+      .then(res => mobiscroll.alert({
+                title: "¡ALERTA!",
+                message: res
+            }))
+     .catch(e => console.log(e));
+      })
+      .catch(e => console.log(e));
   }
  
 }
