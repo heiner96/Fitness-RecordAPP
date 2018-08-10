@@ -33,7 +33,6 @@ export class EjercicioPage {
   	this.ejercicio=this.navParams.get('ejercicio');
   	this.timerSettingss();
     this.calories();
-    this.vibrar();
   }
   timerSettingss(){
   	  	this.timerSettings = {
@@ -91,7 +90,7 @@ export class EjercicioPage {
       this.health.isAvailable()
         .then((available:boolean) => 
         {
-            console.log(available);
+          //console.log(available);
           this.health.requestAuthorization(
             [
               'calories', 'distance',   // Read and write permissions
@@ -101,9 +100,9 @@ export class EjercicioPage {
               }
             ])
         .then(res => alert(res+" acepta "))
-        .catch(e => alert(e));
+        .catch(e => alert(e+"ejercicio linea 103"));
       })
-      .catch(e => alert(e));
+      .catch(e => alert(e+"ejercicio linea 105"));
   }
  
 }
