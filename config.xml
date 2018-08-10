@@ -86,5 +86,5 @@
     <plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
     <plugin name="cordova-plugin-appavailability" spec="^0.4.2" />
     <plugin name="cordova-plugin-health" spec="^1.0.5" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

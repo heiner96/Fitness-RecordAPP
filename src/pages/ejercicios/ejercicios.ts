@@ -36,9 +36,9 @@ export class EjerciciosPage {
   showEjercicio(ejercicio: Ejercicio){
    const modal = this.modalCtrl.create(EjercicioPage,{ ejercicio : ejercicio });
    modal.present().then(response => {
-	    console.log(response);
+	    alert(response);
 	}).catch(e => {
-	    console.log(e);
+	     alert(e);
 	});
 
   }
