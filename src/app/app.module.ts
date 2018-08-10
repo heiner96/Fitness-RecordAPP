@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
 import { EjercicioPage } from '../pages/ejercicio/ejercicio';
 import { LoginPage } from '../pages/login/login';
+import { Health } from '@ionic-native/health';
 
 import { EjercicioService } from '../services/ejercicio.service';
 import { AuthService } from '../services/auth.service';
@@ -55,6 +56,7 @@ import { Vibration } from '@ionic-native/vibration';
     StatusBar,
     SplashScreen,
     HTTP,
+    Health,
     Vibration,
     AuthService,
     EjercicioService,
