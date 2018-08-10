@@ -90,7 +90,7 @@ export class EjercicioPage {
       this.health.isAvailable()
         .then((available:boolean) => 
         {
-            alert(available);
+            console.log(available);
           this.health.requestAuthorization(
             [
               'calories', 'distance',   // Read and write permissions
@@ -99,7 +99,7 @@ export class EjercicioPage {
                 write : ['height', 'weight']  // Write only permission
               }
             ])
-        .then(res => alert(res))
+        .then(res => alert(res+" acepta "))
         .catch(e => alert(e));
       })
       .catch(e => alert(e));
