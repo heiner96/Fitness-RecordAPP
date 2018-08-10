@@ -33,6 +33,7 @@ export class EjercicioPage {
   	this.ejercicio=this.navParams.get('ejercicio');
   	this.timerSettingss();
     this.calories();
+    this.vibrar();
   }
   timerSettingss(){
   	  	this.timerSettings = {
@@ -41,7 +42,7 @@ export class EjercicioPage {
         maxWheel: 'minutes',
         minWidth: 100,
         onFinish: function () {
-            this.vibrar();
+            this.vibration.vibrate([2000,1000,2000]);
             mobiscroll.alert({
                 title: "¡TIEMPO FINALIZADO!",
                 message: "¡SI!, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
@@ -51,7 +52,7 @@ export class EjercicioPage {
     };
   }
   vibrar(){
-  	 this.vibration.vibrate([2000,1000,2000]);
+  	this.vibration.vibrate([2000,1000,2000]);
   }
   
   ionViewWillLoad() {  
