@@ -100,7 +100,7 @@ export class EjercicioPage {
               }
             ])
         .then(res => alert(res+" acepta "))
-        .catch(e => alert(e+"ejercicio linea 103"));
+        .catch(e => alert(e+" ejercicio linea 103"));
       })
       .catch(e => alert(e+"ejercicio linea 105"));
   }
