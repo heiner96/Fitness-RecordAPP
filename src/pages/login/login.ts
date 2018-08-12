@@ -32,6 +32,12 @@ export class LoginPage {
 				this.servicio.user = new User(user['id'],user['email'],user['pDiaPago'],user['token'],user['edad'],user['idGimnasio'],1,msg['access_token']);
 					try{
 						window["plugins"].OneSignal.setEmail(this.servicio.user.email);
+						window["plugins"].OneSignal.addEmailSubscriptionObserver(function(stateChanges) {
+						    //Email subscription state changed
+						let newEmailAddress = stateChanges.to.emailAddress;
+						let newUserId = stateChanges.to.emailUserId;
+						alert(newEmailAddress+" " + newUserId);
+						});
 					}catch(e){
 						alert(e);
 					}
