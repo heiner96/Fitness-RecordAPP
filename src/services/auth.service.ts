@@ -113,4 +113,15 @@ export  class AuthService
 				processData: false,
 			});	
 	}
+	public actualizarTokenUserMovile(access_token,token){
+		return $.ajax({
+			type: 'PUT',	
+			dataType: "json",
+			headers: {
+				'Authorization':'Bearer '+ access_token
+			}, 
+				url: 'http://fitnessrecord.herokuapp.com/api/auth/token/user/'+token,
+				processData: false,
+			});	
+	}
 }

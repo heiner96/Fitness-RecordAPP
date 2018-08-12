@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { AlertController } from 'ionic-angular';
 
-import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-contact',
