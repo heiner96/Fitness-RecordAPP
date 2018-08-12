@@ -30,8 +30,12 @@ export class LoginPage {
 		this.servicio.login(this.email,this.password).done((msg) => {
 			this.servicio.currentUser(msg['access_token']).done((user) => {
 				this.servicio.user = new User(user['id'],user['email'],user['pDiaPago'],user['token'],user['edad'],user['idGimnasio'],1,msg['access_token']);
-				window["plugins"].OneSignal.setEmail(this.servicio.user.email);
-				this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => console.log(error));
+					try{
+						window["plugins"].OneSignal.setEmail(this.servicio.user.email);
+					}catch(e){
+						alert(e);
+					}
+				this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => alert(error));
 			})
 		});
 	}
