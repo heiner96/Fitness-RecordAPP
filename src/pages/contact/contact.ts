@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { AlertController } from 'ionic-angular';
 
+import { AlertController } from 'ionic-angular';
+
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -16,11 +18,31 @@ export class ContactPage {
   ionViewWillEnter(){
     this.actualizar();
   }
-
   salirse(){
-  	 this.servicio.salirseGym(this.servicio.user.at).done((datas)=>{  	 	
-  	 	this.actualizar();
-  	 })
+      let alert = this.alertCtrl.create({
+      title: 'Confirmacion',
+      message: '¿Quieres salirte del Gimnasio?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            this.actualizar();
+          }
+        },
+        {
+          text: 'Salirse',
+          handler: () => {            
+            this.servicio.salirseGym(this.servicio.user.at).done((datas)=>{      
+              this.actualizar();
+          });
+         } 
+        }      
+      ]
+    });
+     alert.present().then(()=>{
+      this.actualizar();
+    });
   }
   actualizar()
   {

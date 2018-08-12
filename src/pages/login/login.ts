@@ -31,13 +31,14 @@ export class LoginPage {
 			this.servicio.currentUser(msg['access_token']).done((user) => {
 				this.servicio.user = new User(user['id'],user['email'],user['pDiaPago'],user['token'],user['edad'],user['idGimnasio'],1,msg['access_token']);
 					try{
-						window["plugins"].OneSignal.setEmail(this.servicio.user.email);
-						window["plugins"].OneSignal.addEmailSubscriptionObserver(function(stateChanges) {
-						    //Email subscription state changed
-						let newEmailAddress = stateChanges.to.emailAddress;
-						let newUserId = stateChanges.to.emailUserId;
-						alert(newEmailAddress+" " + newUserId);
-						});
+						    window.plugins.OneSignal.getUserId(function(userId) {
+					             if ( null == userId ) {
+					                   alert( "this user id is blank, and so they cannot subscribe" );
+					             }
+					             else{
+					             	alert(userId);
+					             }
+				    		 });
 					}catch(e){
 						alert(e);
 					}
