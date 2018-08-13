@@ -33,7 +33,7 @@ export class LoginPage {
 					try{
 						window['plugins'].OneSignal.getIds((id)=>							
 								this.servicio.actualizarTokenUserMovile(msg['access_token'],JSON.stringify(id.userId)).done((msg) => {
-									//
+									
 								})
 							);
 					}catch(e){
