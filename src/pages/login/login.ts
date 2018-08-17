@@ -41,6 +41,8 @@ export class LoginPage {
 					}
 				this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => alert(error));
 			})
-		});
+		}).fail(function(data) {
+		    alert( data );
+		  });
 	}
 }
