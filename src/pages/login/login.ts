@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../database';
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +20,8 @@ import { User } from '../../database';
 export class LoginPage {
 	email: string;
 	password : string
-  constructor(public navCtrl: NavController, public navParams: NavParams, private servicio: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  			private servicio: AuthService, private toast: Toast) {
   }
 
   ionViewDidLoad() {
@@ -41,8 +43,14 @@ export class LoginPage {
 					}
 				this.navCtrl.setRoot(TabsPage).then(data => console.log(data),error => alert(error));
 			})
-		}).fail(function(data) {
-		    alert( data );
+		}).fail(function(data,status,err) {
+		    if(err=='Unauthorized'){
+		    	this.toast.show('Credenciales incorrectas', '5000', 'center').subscribe(
+					  toast => {
+					    console.log(toast);
+					  }
+					);
+		    }
 		  });
 	}
 }
