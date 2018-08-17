@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
- mobiscroll.settings = {
+ MbscModule.settings = {
     theme: 'ios',
 };
 
