@@ -22,7 +22,7 @@ export class LoginPage {
 	email: string;
 	password : string
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  			private servicio: AuthService, private toast: Toast,private toastCtrl: ToastController) {
+  			private servicio: AuthService) {
   }
 
   ionViewDidLoad() {
@@ -46,21 +46,9 @@ export class LoginPage {
 			})
 		}).fail(function(data,status,err) {
 		    if(err=='Unauthorized'){
-		    	this.presentToast("Credenciales incorrectas");
+		    	alert("Credenciales incorrectas");
 		    }
 		  });
 	}
-	presentToast(mensaje) {
-	  let toast = this.toastCtrl.create({
-	    message: mensaje,
-	    duration: 3000,
-	    position: 'middle'
-	  });
 
-	  toast.onDidDismiss(() => {
-	    console.log('Dismissed toast');
-	  });
-
-	  toast.present();
-	}
 }

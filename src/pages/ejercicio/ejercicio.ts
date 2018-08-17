@@ -5,7 +5,9 @@ import { Vibration } from '@ionic-native/vibration';
 import { AlertController } from 'ionic-angular';
 import { Health } from '@ionic-native/health';
 
-import { mobiscroll } from '@mobiscroll/angular';
+import { MbscModule } from '@mobiscroll/angular';
+import { FormsModule } from '@angular/forms';
+
 
 /**
  * Generated class for the EjercicioPage page.

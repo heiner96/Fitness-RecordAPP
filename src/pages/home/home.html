@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="card-background-page">
-  <ion-title align="center">REPETICIONES<ion-input align="center" [(ngModel)]="repeticiones" disabled ></ion-input> </ion-title>
+  <ion-title align="center">REPETICIONES <p align="center">{{repeticiones}}</p> </ion-title>
   <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(6)">
     <img src="assets/img/espalda.jpg"/>
     <div class="card-title">ESPALDA</div>
