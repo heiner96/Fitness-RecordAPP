@@ -3,19 +3,58 @@
     <ion-title>RUTINA</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="card-background-page">
   <ion-title align="center">REPETICIONES<ion-input align="center" [(ngModel)]="repeticiones" disabled ></ion-input> </ion-title>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(6)" >ESPALDA</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(1)">CUADRICEPS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(2)">ISQUIOTIBIALES</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(3)">PECHO</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(4)">ADUCTORES</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(5)">TRICEPS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(7)">HOMBROS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(8)">BICEPS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(9)">GLUTEO</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(10)">TRAPECIO</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(13)">PANTORRILLAS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(11)">AEROBICOS</button>
-  <button ion-button full [navPush]="ejerciciosPage1" (click)="showEjercicios(12)">CARDIO</button>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(6)">
+    <img src="http://www.latribuna.cl/diario/restringido/photos/16-10-2016_20-48-06web.jpg"/>
+    <div class="card-title">ESPALDA</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(1)">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfRo2HCmWBGMGZSBDgBUtEbhk62zNXhv_udbhByNwlnUHZ-wD5"/>
+    <div class="card-title">CUADRICEPS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(2)">
+    <img src="https://hdstatic.net/gridfs/holadoctor/625x470_50379d7ab93795203f000001_7_34-1346101083.jpg"/>
+    <div class="card-title">ISQUIOTIBIALES</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(3)">
+    <img src="https://as01.epimg.net/deporteyvida/imagenes/2017/07/06/portada/1499359420_888140_1499359773_sumario_normal.jpg"/>
+    <div class="card-title">PECHO</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(4)">
+    <img src="https://www.activopia.com/wp-content/uploads/2014/03/maquina-de-aductores-300x300.jpg"/>
+    <div class="card-title">ADUCTORES</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(5)">
+    <img src="https://mindfit.club/wp-content/uploads/2017/05/ejercicios-triceps.jpg"/>
+    <div class="card-title">TRICEPS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(7)">
+    <img src="https://mindfit.club/wp-content/uploads/2017/05/ejercicios-hombros.jpg"/>
+    <div class="card-title">HOMBROS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(8)">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV9N6geiZ2yIJZB2MooONAglfMZPoPtDbOXjmpRHGlYGrvhqLU5w"/>
+    <div class="card-title">BICEPS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(9)">
+    <img src="http://www.tabladeejerciciosparahacerencasa.com/wp-content/uploads/2015/02/shutterstock_156393290.jpg"/>
+    <div class="card-title">GLUTEO</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(10)">
+    <img src="https://www.entrenamiento.com/wp-content/uploads/2016/05/trapecios.jpg"/>
+    <div class="card-title">TRAPECIO</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(13)">
+    <img src="https://javierchirinos.com/wp-content/uploads/2017/03/Piernas-de-culturista-6-1.png"/>
+    <div class="card-title">PANTORRILLAS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(11)">
+    <img src="https://sparta.cl/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/a/e/aerobic-step-bf-ir97302-1-_4_.jpg"/>
+    <div class="card-title">AEROBICOS</div>
+  </ion-card>
+  <ion-card [navPush]="ejerciciosPage1" (click)="showEjercicios(12)">
+    <img src="https://1.bp.blogspot.com/-xv2sxox5EC0/U01kNgb8pMI/AAAAAAAAFBE/BPD7oJtOQzM/s1600/beneficios+entrenamiento+pesas.jpg"/>
+    <div class="card-title">CARDIO</div>
+  </ion-card>
 </ion-content>
