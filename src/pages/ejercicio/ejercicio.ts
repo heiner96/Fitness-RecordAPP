@@ -7,6 +7,7 @@ import { Health } from '@ionic-native/health';
 
 import { MbscModule } from '@mobiscroll/angular';
 import { FormsModule } from '@angular/forms';
+import { mobiscroll } from '@mobiscroll/angular';
 
 
 /**
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
- MbscModule.settings = {
+ mobiscroll.settings = {
     theme: 'ios',
 };
 

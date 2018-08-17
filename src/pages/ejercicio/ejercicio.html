@@ -15,9 +15,9 @@
 </ion-header>
 <ion-content padding>
 	<label>DESCRIPCION</label>
-	<ion-textarea [(ngModel)]="ejercicio.descripcion" disabled></ion-textarea>
+	<p>{{ejercicio.descripcion}}</p>
 	<label>EXPLICACION</label>
-	<ion-textarea [(ngModel)]="ejercicio.explicacion" disabled></ion-textarea>
+	<p>{{ejercicio.explicacion}}</p>
 	<div *ngIf="ejercicio.tiempo>0">
 		<mbsc-form>
 		    <div class="mbsc-form-group">

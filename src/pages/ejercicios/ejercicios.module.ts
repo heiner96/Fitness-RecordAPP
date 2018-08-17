@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { EjerciciosPage } from './ejercicios';
@@ -6,7 +8,9 @@ import { EjerciciosPage } from './ejercicios';
   declarations: [
     EjerciciosPage,
   ],
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     IonicPageModule.forChild(EjerciciosPage),
   ],
 })
