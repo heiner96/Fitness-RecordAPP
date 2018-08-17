@@ -5,20 +5,13 @@ import { Vibration } from '@ionic-native/vibration';
 import { AlertController } from 'ionic-angular';
 import { Health } from '@ionic-native/health';
 
-import { MbscModule } from '@mobiscroll/angular';
-import { FormsModule } from '@angular/forms';
-import { mobiscroll } from '@mobiscroll/angular';
-
-
 /**
  * Generated class for the EjercicioPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
- mobiscroll.settings = {
-    theme: 'ios',
-};
+
 
 @IonicPage()
 @Component({
@@ -29,34 +22,15 @@ export class EjercicioPage {
 
 	ejercicio : Ejercicio;
 	timer: number;
+  buton : boolean;
   	timerSettings: any ;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   			     private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health) 
   {  	  	
-  	this.ejercicio=this.navParams.get('ejercicio');
-  	this.timerSettingss();
+  	this.ejercicio=this.navParams.get('ejercicio');  	
     this.calories();
+    this.buton=true;
   }
-  timerSettingss(){
-  	  	this.timerSettings = {
-        display: 'inline',
-        targetTime: this.ejercicio.tiempo*60,
-        maxWheel: 'minutes',
-        minWidth: 100,
-        onFinish: function () {
-            this.vibration.vibrate([2000,1000,2000]);
-            mobiscroll.alert({
-                title: "¡TIEMPO FINALIZADO!",
-                message: "¡SI!, LO LOGRASTE. <br> PRESIONA RESET PARA EMPEZAR NUEVAMENTE"
-
-            });
-        }
-    };
-  }
-  vibrar(){
-  	this.vibration.vibrate([2000,1000,2000]);
-  }
-  
   ionViewWillLoad() {  
   }
   hide(){
@@ -77,7 +51,8 @@ export class EjercicioPage {
         },
         {
           text: 'Iniciar',
-          handler: () => {            
+          handler: () => { 
+          this.buton=false;           
               if (ejercicio.hasOwnProperty('tiempo')) { 
                 if(ejercicio.tiempo!=0){
                     this.timer= (ejercicio.tiempo)*60;
@@ -85,6 +60,7 @@ export class EjercicioPage {
                     this.timer--;
                     if(this.timer==0){
                       clearInterval(intervalVar);//hacer que vibre 5 segundos
+                      this.buton=true;
                       this.vibration.vibrate([2000,1000,2000]);
                     const alert = this.alertCtrl.create({
                         title: '!Felicidades!',

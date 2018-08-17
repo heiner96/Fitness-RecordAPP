@@ -19,7 +19,9 @@
 	<label>EXPLICACION</label>
 	<p>{{ejercicio.explicacion}}</p>
 	<div *ngIf="ejercicio.tiempo>0">
-		<button ion-button full outline (click)="revisarTiempo(this.ejercicio)">Iniciar tiempo</button>
+		<div *ngIf="this.buton==true">			
+			<button ion-button full outline (click)="revisarTiempo(this.ejercicio)">Iniciar tiempo</button>
+		</div>
 	</div>	
 </ion-content>
 <ion-footer>
