@@ -19,12 +19,7 @@
 	<label>EXPLICACION</label>
 	<p>{{ejercicio.explicacion}}</p>
 	<div *ngIf="ejercicio.tiempo>0">
-		<mbsc-form>
-		    <div class="mbsc-form-group">
-		        <div class="mbsc-form-group-title">TIEMPO PROGRAMADO</div>
-		        <div [(ngModel)]="timer" mbsc-timer [mbsc-options]="timerSettings"></div>
-		    </div>
-		</mbsc-form>
+		<button ion-button full outline (click)="revisarTiempo(this.ejercicio)">Iniciar tiempo</button>
 	</div>	
 </ion-content>
 <ion-footer>

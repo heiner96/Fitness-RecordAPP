@@ -64,30 +64,52 @@ export class EjercicioPage {
   }
 
   revisarTiempo(ejercicio : Ejercicio){
-	if (ejercicio.hasOwnProperty('tiempo')) { 
-		if(ejercicio.tiempo!=0){
-		    this.timer= (ejercicio.tiempo)*60;
-		    var intervalVar = setInterval(function(){
-		   	this.timer--;
-		   	if(this.timer==0){
-		   		clearInterval(intervalVar);//hacer que vibre 5 segundos
-		   		this.vibration.vibrate([2000,1000,2000]);
-				const alert = this.alertCtrl.create({
-			      title: '!Felicidades!',
-			      subTitle: '!Se acabo el tiempo!',
-			      buttons: ['OK']
-			    });
-			    alert.present();
-		   	}
-		   }.bind(this),1000)
-		}
-		else{
-			  		//no es un ejercicio por tiempo
-		}
-	}  	
-	else{
-		//no tiene tiempo
-	}  	
+	  let alert = this.alertCtrl.create({
+      title: 'Confirmacion',
+      message: '¿Quieres iniciar el tiempo?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+
+          }
+        },
+        {
+          text: 'Iniciar',
+          handler: () => {            
+              if (ejercicio.hasOwnProperty('tiempo')) { 
+                if(ejercicio.tiempo!=0){
+                    this.timer= (ejercicio.tiempo)*60;
+                    var intervalVar = setInterval(function(){
+                    this.timer--;
+                    if(this.timer==0){
+                      clearInterval(intervalVar);//hacer que vibre 5 segundos
+                      this.vibration.vibrate([2000,1000,2000]);
+                    const alert = this.alertCtrl.create({
+                        title: '!Felicidades!',
+                        subTitle: '!Se acabo el tiempo!',
+                        buttons: ['OK']
+                      });
+                      alert.present();
+                      return;
+                    }
+                   }.bind(this),1000)
+                }
+                else{
+                        //no es un ejercicio por tiempo
+                }
+              }   
+              else{
+                //no tiene tiempo
+              } 
+          } 
+        }      
+      ]
+    });   
+     alert.present().then(()=>{
+      
+    }); 	
   }
   calories(){
       this.health.isAvailable()
