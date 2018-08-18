@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class AboutPage{
 
-   lineChartLabels:Array<any> = [''];
+   lineChartLabels:Array<any> = [/*"2018-06-27 09:46:12","2018-08-17 15:09:48","2018-08-17 17:11:00","2018-08-17 17:56:34"*/];
    lineChartData:Array<any> = [{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''}];
   /*{data: [], label: 'ABDOMEN'},//p
   {data: [], label: 'BICEPS'},//p
@@ -93,7 +93,10 @@ getMedicionesInfo()
       var n = month[d.getMonth()];
       score.TeamFechas.push(datas[i].fecha);
     });
-    this.lineChartLabels=score.TeamFechas;
+    for (var i = 0; i < score.TeamFechas.length; i++) {
+        this.lineChartLabels[i]=score.TeamFechas[i];
+      }  
+    //this.lineChartLabels=score.TeamFechas;
     this.lineChartData=[
     {data:score.TeamL , label:"ABDOMEN"},
     {data:score.TeamM , label:"BICEPS"},
@@ -111,8 +114,6 @@ getMedicionesInfo()
     {data:score.TeamG , label:"PESO"},
     {data:score.TeamK , label:"TRICEPS"}
     ];
-    
-    
     console.log(this.lineChartLabels);
     console.log(this.lineChartData);
     });
