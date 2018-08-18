@@ -69,7 +69,10 @@
       "cordova-plugin-ionic-keyboard": {},
       "onesignal-cordova-plugin": {},
       "cordova-plugin-appavailability": {},
-      "cordova-plugin-health": {},
+      "cordova-plugin-health": {
+        "HEALTH_READ_PERMISSION": "App needs read access",
+        "HEALTH_WRITE_PERMISSION": "App needs write access"
+      },
       "cordova-plugin-x-toast": {}
     },
     "platforms": [

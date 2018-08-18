@@ -100,10 +100,17 @@ export class EjercicioPage {
                 write : ['height', 'weight']  // Write only permission
               }
             ])
-        .then(res => alert(res+" acepta "))
-        .catch(e => alert(e+" ejercicio linea 103"));
+            .then((res) => {
+              alert(res+" acepta ");
+              navigator.health.query({
+                  startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+                  endDate: new Date(), // now
+                  dataType: 'calories'
+                }, (res)=>alert(res+" bien linea 109 "), (error)=>alert(error+" error 109"))
+              })
+            .catch(e => alert(e+" ejercicio linea 111"));
       })
-      .catch(e => alert(e+"ejercicio linea 105"));
+      .catch(e => alert(e+"ejercicio linea 113"));
   }
  
 }
