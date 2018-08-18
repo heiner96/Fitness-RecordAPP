@@ -12,35 +12,35 @@ import { AuthService } from '../../services/auth.service';
 
 export class AboutPage{
 
+   lineChartLabels:Array<any> = [''];
+   lineChartData:Array<any> = [{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''},{data:[],label:''}];
+  /*{data: [], label: 'ABDOMEN'},//p
+  {data: [], label: 'BICEPS'},//p
+  {data: [], label: 'BICEPS DERECHO CONTRAÍDO'},//c
+  {data: [], label: 'BICEPS IZQUIERDO CONTRAÍDO'},//c celeste
+  {data: [], label: 'ESPALDA'},//c
+  {data: [], label: 'ÍNDICE DE MASA CORPORAL'},//ec
+  {data: [], label: 'MUSLO'},//p
+  {data: [], label: 'MUSLO DERECHO'},//c
+  {data: [], label: 'MUSLO IZQUIERDO'},//c
+  {data: [], label: 'PORCENTAJE DE GRASA'},//ec verde
+  {data: [], label: 'PORCENTAJE DE MÚSCULO'},//ec
+  {data: [], label: 'PANTORRILLAS'},//p
+  {data: [], label: 'PECHO'},//c
+  {data: [], label: 'PESO'},//ec
+  {data: [], label: 'TRICEPS'}//p
+];*/
+
   constructor(public navCtrl: NavController,private servicio: AuthService) {
-  	this.getMedicionesInfo();
-    //this.cargarDatos();
+  	//this.getMedicionesInfo();
   }
-
-
-  public lineChartLabels:Array<any> = [/*'January', 'February', 'March', 'April', 'May', 'June', 'July'*/];
-  public lineChartData:Array<any> = [
-  {data: [/*65, 59, 80, 81, 56, 55, 40*/], label: 'ABDOMEN'},//p
-  {data: [/*28, 48, 40, 19, 86, 27, 90*/], label: 'BICEPS'},//p
-  {data: [/*18, 48, 77, 9, 100, 27, 40*/], label: 'BICEPS DERECHO CONTRAÍDO'},//c
-  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'BICEPS IZQUIERDO CONTRAÍDO'},//c celeste
-  {data: [/*98, 48, 77, 9, 100, 27, 40*/], label: 'ESPALDA'},//c
-  {data: [/*158, 48, 77, 9, 100, 27, 40*/], label: 'ÍNDICE DE MASA CORPORAL'},//ec
-  {data: [/*8, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO'},//p
-  {data: [/*162, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO DERECHO'},//c
-  {data: [/*38, 48, 77, 9, 100, 27, 40*/], label: 'MUSLO IZQUIERDO'},//c
-  {data: [/*88, 48, 77, 9, 100, 27, 40*/], label: 'PORCENTAJE DE GRASA'},//ec verde
-  {data: [/*98, 48, 77, 9, 150, 27, 40*/], label: 'PORCENTAJE DE MÚSCULO'},//ec
-  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'PANTORRILLAS'},//p
-  {data: [/*228, 48, 77, 9, 100, 27, 40*/], label: 'PECHO'},//c
-  {data: [/*168, 48, 77, 9, 100, 27, 40*/], label: 'PESO'},//ec
-  {data: [/*48, 48, 77, 9, 100, 27, 40*/], label: 'TRICEPS'}//p
-];
-  getMedicionesInfo()
+ionViewWillEnter()
+{
+  this.getMedicionesInfo();
+}
+getMedicionesInfo()
   {
     let score ;
-    var arreglo:Array<any>;
-    let json ;
     this.servicio.getMedicionesInfo(this.servicio.user.at).done((datas)=>{
       score = {
       TeamA : [],//bicepsDerechoCont
@@ -60,7 +60,6 @@ export class AboutPage{
       TeamO : [],//pantorrilla 
       TeamFechas : []
       };
-      let date;
       $.each(datas, function(i, item) {
       score.TeamA.push(parseInt(datas[i].bicepsDerechoCont));//
       score.TeamB.push(parseInt(datas[i].bicepsIzquierdoCont));//
@@ -77,37 +76,52 @@ export class AboutPage{
       score.TeamM.push(parseInt(datas[i].biceps));//
       score.TeamN.push(parseInt(datas[i].muslo));//
       score.TeamO.push(parseInt(datas[i].pantorrilla));//  //15 respuestas de grupos musculares
-      //date=new Date(datas[i].fecha);
-      //console.log((datas[i].fecha).toString());
       var d = new Date(datas[i].fecha);
-      score.TeamFechas.push(d.toString());
-      //score.TeamFechas.push(datas[i].fecha);
+      var month = new Array();
+      month[0] = 'January';
+      month[1] = 'February';
+      month[2] = 'March';
+      month[3] = 'April';
+      month[4] = 'May';
+      month[5] = 'June';
+      month[6] = 'July';
+      month[7] = 'August';
+      month[8] = 'September';
+      month[9] = 'October';
+      month[10] = 'November';
+      month[11] = 'December';
+      var n = month[d.getMonth()];
+      score.TeamFechas.push(datas[i].fecha);
     });
-    //arreglo= new Array();
-    this.lineChartData=[
-    {data:score.TeamL,label:"ABDOMEN"},
-    {data:score.TeamM, label:"BICEPS"},
-    {data:score.TeamA, label:"BICEPS DERECHO CONTRAÍDO"},
-    {data:score.TeamB, label:"BICEPS IZQUIERDO CONTRAÍDO"},
-    {data:score.TeamF, label:"ESPALDA"},
-    {data:score.TeamH, label:"ÍNDICE DE MASA CORPORAL"},
-    {data:score.TeamN, label:"MUSLO"},
-    {data:score.TeamC, label:"MUSLO DERECHO"},
-    {data:score.TeamD, label:"MUSLO IZQUIERDO"},
-    {data:score.TeamI, label:"PORCENTAJE DE GRASA"},
-    {data:score.TeamJ, label:"PORCENTAJE DE MÚSCULO"},
-    {data:score.TeamO, label:"PANTORRILLAS"},
-    {data:score.TeamE, label:"PECHO"},
-    {data:score.TeamG, label:"PESO"},
-    {data:score.TeamK, label:"TRICEPS"},
-    ];
     this.lineChartLabels=score.TeamFechas;
-    console.log(score.TeamFechas);
-    })
+    this.lineChartData=[
+    {data:score.TeamL , label:"ABDOMEN"},
+    {data:score.TeamM , label:"BICEPS"},
+    {data:score.TeamA , label:"BICEPS DERECHO CONTRAÍDO"},
+    {data:score.TeamB , label:"BICEPS IZQUIERDO CONTRAÍDO"},
+    {data:score.TeamF , label:"ESPALDA"},
+    {data:score.TeamH , label:"ÍNDICE DE MASA CORPORAL"},
+    {data:score.TeamN , label:"MUSLO"},
+    {data:score.TeamC , label:"MUSLO DERECHO"},
+    {data:score.TeamD , label:"MUSLO IZQUIERDO"},
+    {data:score.TeamI , label:"PORCENTAJE DE GRASA"},
+    {data:score.TeamJ , label:"PORCENTAJE DE MÚSCULO"},
+    {data:score.TeamO , label:"PANTORRILLAS"},
+    {data:score.TeamE , label:"PECHO"},
+    {data:score.TeamG , label:"PESO"},
+    {data:score.TeamK , label:"TRICEPS"}
+    ];
+    
+    
+    console.log(this.lineChartLabels);
+    console.log(this.lineChartData);
+    });
+    
   }
 
 public lineChartOptions:any = {
-  responsive: true
+  responsive: true,
+  legend: { display: true }
 };
 public lineChartColors:Array<any> = [
   { // grey
@@ -233,7 +247,7 @@ public lineChartColors:Array<any> = [
 ];
 public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
-public randomize():void {
+/*public randomize():void {
   let _lineChartData:Array<any> = new Array(this.lineChartData.length);
   for (let i = 0; i < this.lineChartData.length; i++) {
     _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
@@ -242,7 +256,7 @@ public randomize():void {
     }
   }
   this.lineChartData = _lineChartData;
-}
+}*/
 
 // events
 public chartClicked(e:any):void {
