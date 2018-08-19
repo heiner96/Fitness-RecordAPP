@@ -49,6 +49,7 @@
     "jquery": "^3.3.1",
     "ng2-charts": "^1.6.0",
     "onesignal-cordova-plugin": "^2.4.1",
+    "org.velardo.cordova-plugin-googlefit": "^1.2.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -73,7 +74,8 @@
         "HEALTH_READ_PERMISSION": "App needs read access",
         "HEALTH_WRITE_PERMISSION": "App needs write access"
       },
-      "cordova-plugin-x-toast": {}
+      "cordova-plugin-x-toast": {},
+      "org.velardo.cordova-plugin-googlefit": {}
     },
     "platforms": [
       "android"

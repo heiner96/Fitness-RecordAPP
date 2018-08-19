@@ -88,29 +88,33 @@ export class EjercicioPage {
     }); 	
   }
   calories(){
-      this.health.isAvailable()
-        .then((available:boolean) => 
-        {
-          //console.log(available);
-          this.health.requestAuthorization(
-            [
-              'calories', 'distance',   // Read and write permissions
-              {
-                read : ['steps'],       // Read only permission
-                write : ['height', 'weight']  // Write only permission
-              }
-            ])
-            .then((res) => {
-              alert(res+" acepta ");
-              navigator.health.query({
-                  startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
-                  endDate: new Date(), // now
-                  dataType: 'calories'
-                }, (res)=>alert(res+" bien linea 109 "), (error)=>alert(error+" error 109"))
-              })
-            .catch(e => alert(e+" ejercicio linea 111"));
+    this.health.isAvailable()
+      .then((available: boolean) => {
+        alert(available);
+        this.health.requestAuthorization([
+          'distance', 'calories',  //read and write permissions
+          {
+            read: ['steps'],       //read only permission
+            write: ['height', 'weight']  //write only permission
+          }
+        ])
+          .then(res => this.health.query({
+      startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+      endDate: new Date(), //now
+      dataType: 'calories'
+    }).then((value: any) => {
+      alert("Before Convertion")
+      alert("Before For loop")
+      for (let val in value) {
+        alert("HealthData data  " + JSON.stringify(value[val].value))
+        alert("HealthData data  " + JSON.stringify(value[val]))
+      }
+    }).catch((e: any) => {
+      alert("HealthData ERROR:---" + e)
+    }))
+          .catch(e => alert(e+ " 111 error"));
       })
-      .catch(e => alert(e+"ejercicio linea 113"));
+      .catch(e => alert(e+ "113 error no disponible"));
   }
  
 }

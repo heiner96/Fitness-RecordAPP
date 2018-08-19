@@ -91,4 +91,5 @@
         <variable name="HEALTH_READ_PERMISSION" value="App needs read access" />
         <variable name="HEALTH_WRITE_PERMISSION" value="App needs write access" />
     </plugin>
+    <plugin name="org.velardo.cordova-plugin-googlefit" spec="^1.2.0" />
 </widget>
