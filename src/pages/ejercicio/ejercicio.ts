@@ -20,25 +20,26 @@ import { Health } from '@ionic-native/health';
 })
 export class EjercicioPage {
 
-	ejercicio : Ejercicio;
-	timer: number;
+ejercicio : Ejercicio;
+  timer: number;
   buton : boolean;
-  	timerSettings: any ;
+  timerSettings: any ;
+  startDate: any; 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-  			     private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health) 
-  {  	  	
-  	this.ejercicio=this.navParams.get('ejercicio');  	
-    this.calories();
+             private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health) 
+  {       
+    this.ejercicio=this.navParams.get('ejercicio');   
+    //this.calories();
     this.buton=true;
+    //this.calorias();
   }
   ionViewWillLoad() {  
   }
   hide(){
-  	this.view.dismiss();
+    this.view.dismiss();
   }
-
   revisarTiempo(ejercicio : Ejercicio){
-	  let alert = this.alertCtrl.create({
+    let alert = this.alertCtrl.create({
       title: 'Confirmacion',
       message: '¿Quieres iniciar el tiempo?',
       buttons: [
@@ -52,13 +53,15 @@ export class EjercicioPage {
         {
           text: 'Iniciar',
           handler: () => { 
-          this.buton=false;           
+          this.buton=false;
+          this.startDate=new Date();                     
               if (ejercicio.hasOwnProperty('tiempo')) { 
                 if(ejercicio.tiempo!=0){
                     this.timer= (ejercicio.tiempo)*60;
                     var intervalVar = setInterval(function(){
                     this.timer--;
                     if(this.timer==0){
+                      this.calories();
                       clearInterval(intervalVar);//hacer que vibre 5 segundos
                       this.buton=true;
                       this.vibration.vibrate([2000,1000,2000]);
@@ -85,12 +88,12 @@ export class EjercicioPage {
     });   
      alert.present().then(()=>{
       
-    }); 	
+    });   
   }
   calories(){
-    this.health.isAvailable()
+    this.health.isAvailable()    
       .then((available: boolean) => {
-        alert(available);
+        alert(this.startDate)
         this.health.requestAuthorization([
           'distance', 'calories',  //read and write permissions
           {
@@ -99,22 +102,20 @@ export class EjercicioPage {
           }
         ])
           .then(res => this.health.query({
-      startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+      startDate: this.startDate, // three days ago
       endDate: new Date(), //now
       dataType: 'calories'
     }).then((value: any) => {
-      alert("Before Convertion")
-      alert("Before For loop")
+      alert(value);
       for (let val in value) {
-        alert("HealthData data  " + JSON.stringify(value[val].value))
-        alert("HealthData data  " + JSON.stringify(value[val]))
+        alert("HealthData data  113-" + JSON.stringify(value[val].value))//calorias (.unit)= kcal
+        alert("HealthData data  114-" + JSON.stringify(value[val]))
       }
     }).catch((e: any) => {
       alert("HealthData ERROR:---" + e)
     }))
-          .catch(e => alert(e+ " 111 error"));
+       .catch(e => alert("Lo sentimos, para hacer uso del contador de calorias, debes aceptar"));
       })
-      .catch(e => alert(e+ "113 error no disponible"));
+      .catch(e => alert("Si deseas hacer uso del contador de calorias, debes instalar la aplicacion de Google; Google Fit"));
   }
- 
-}
+  }
