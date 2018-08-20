@@ -14,15 +14,18 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-	<label>DESCRIPCION</label>
-	<p>{{ejercicio.descripcion}}</p>
-	<label>EXPLICACION</label>
-	<p>{{ejercicio.explicacion}}</p>
-	<div *ngIf="ejercicio.tiempo>0">
-		<div *ngIf="this.buton==true">			
-			<button ion-button full outline (click)="revisarTiempo(this.ejercicio)">Iniciar tiempo</button>
-		</div>
-	</div>	
+  <label>DESCRIPCION</label>
+  <p>{{ejercicio.descripcion}}</p>
+  <label>EXPLICACION</label>
+  <p>{{ejercicio.explicacion}}</p>
+  <p>CALORIAS QUEMADAS:</p>
+  <p>{{catidadCaloriasQuemadas}}</p>
+  <p>UNIDADES: kcal</p>
+  <div *ngIf="ejercicio.tiempo>0">
+    <div *ngIf="this.buton==true">      
+      <button ion-button full outline (click)="revisarTiempo(this.ejercicio)">INICIAR TIEMPO</button>
+    </div>    
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

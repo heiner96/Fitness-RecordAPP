@@ -19,18 +19,19 @@ import { Health } from '@ionic-native/health';
   templateUrl: 'ejercicio.html',
 })
 export class EjercicioPage {
-
 ejercicio : Ejercicio;
   timer: number;
   buton : boolean;
   timerSettings: any ;
-  startDate: any; 
+  startDate: any;
+  catidadCaloriasQuemadas :any; 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
              private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health) 
   {       
     this.ejercicio=this.navParams.get('ejercicio');   
     //this.calories();
     this.buton=true;
+    this.catidadCaloriasQuemadas=0;
     //this.calorias();
   }
   ionViewWillLoad() {  
@@ -53,8 +54,9 @@ ejercicio : Ejercicio;
         {
           text: 'Iniciar',
           handler: () => { 
-          this.buton=false;
-          this.startDate=new Date();                     
+          this.buton=false;                 
+          this.startDate=new Date();
+          this.catidadCaloriasQuemadas=0;                     
               if (ejercicio.hasOwnProperty('tiempo')) { 
                 if(ejercicio.tiempo!=0){
                     this.timer= (ejercicio.tiempo)*60;
@@ -93,7 +95,6 @@ ejercicio : Ejercicio;
   calories(){
     this.health.isAvailable()    
       .then((available: boolean) => {
-        alert(this.startDate)
         this.health.requestAuthorization([
           'distance', 'calories',  //read and write permissions
           {
@@ -106,11 +107,13 @@ ejercicio : Ejercicio;
       endDate: new Date(), //now
       dataType: 'calories'
     }).then((value: any) => {
-      alert(value);
       for (let val in value) {
-        alert("HealthData data  113-" + JSON.stringify(value[val].value))//calorias (.unit)= kcal
-        alert("HealthData data  114-" + JSON.stringify(value[val]))
+        this.catidadCaloriasQuemadas=JSON.stringify(value[val].value);
+        return;
+        //alert("HealthData data  113-" + JSON.stringify(value[val].value))//calorias (.unit)= kcal
+        //alert("HealthData data  114-" + JSON.stringify(value[val]))
       }
+      alert("si entro, pero no hay datos")
     }).catch((e: any) => {
       alert("HealthData ERROR:---" + e)
     }))
