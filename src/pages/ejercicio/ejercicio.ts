@@ -25,6 +25,7 @@ ejercicio : Ejercicio;
   timerSettings: any ;
   startDate: any;
   catidadCaloriasQuemadas :any; 
+  unidades: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
              private view: ViewController, private vibration: Vibration, public alertCtrl: AlertController,private health: Health) 
   {       
@@ -109,11 +110,11 @@ ejercicio : Ejercicio;
     }).then((value: any) => {
       for (let val in value) {
         this.catidadCaloriasQuemadas=JSON.stringify(value[val].value);
+        this.unidades=JSON.stringify(value[val].unit);
         return;
         //alert("HealthData data  113-" + JSON.stringify(value[val].value))//calorias (.unit)= kcal
         //alert("HealthData data  114-" + JSON.stringify(value[val]))
       }
-      alert("si entro, pero no hay datos")
     }).catch((e: any) => {
       alert("HealthData ERROR:---" + e)
     }))

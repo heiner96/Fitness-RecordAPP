@@ -18,9 +18,11 @@
   <p>{{ejercicio.descripcion}}</p>
   <label>EXPLICACION</label>
   <p>{{ejercicio.explicacion}}</p>
-  <p>CALORIAS QUEMADAS:</p>
-  <p>{{catidadCaloriasQuemadas}}</p>
-  <p>UNIDADES: kcal</p>
+  <div *ngIf="ejercicio.tiempo>0">
+    <p>CALORIAS QUEMADAS:</p>
+    <p>{{catidadCaloriasQuemadas}}</p>
+    <p>UNIDADES: {{unidades}}</p>
+  </div>
   <div *ngIf="ejercicio.tiempo>0">
     <div *ngIf="this.buton==true">      
       <button ion-button full outline (click)="revisarTiempo(this.ejercicio)">INICIAR TIEMPO</button>
